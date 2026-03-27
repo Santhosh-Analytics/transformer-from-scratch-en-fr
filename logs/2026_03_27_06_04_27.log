@@ -1,0 +1,35 @@
+2026-03-27 06:04:27 | INFO     | transformer_mt | common.py:56 | Config loaded from: config/config.yaml
+2026-03-27 06:04:27 | INFO     | transformer_mt | data_preprocessing.py:166 | Loaded spaCy model: en_core_web_sm
+2026-03-27 06:04:29 | INFO     | transformer_mt | data_preprocessing.py:166 | Loaded spaCy model: fr_core_news_sm
+2026-03-27 06:04:29 | INFO     | transformer_mt | data_preprocessing.py:331 | DataPreprocessing initialised.
+2026-03-27 06:04:29 | INFO     | transformer_mt | data_preprocessing.py:406 | ── Tokenising splits ───────────────────────────
+2026-03-27 06:04:29 | INFO     | transformer_mt | data_preprocessing.py:339 | Loaded 29,000 sentences from artifacts/data/raw/train.en
+2026-03-27 06:04:29 | INFO     | transformer_mt | data_preprocessing.py:339 | Loaded 29,000 sentences from artifacts/data/raw/train.fr
+2026-03-27 06:04:29 | INFO     | transformer_mt | data_preprocessing.py:345 | Tokenising train split …
+2026-03-27 06:05:08 | INFO     | transformer_mt | data_preprocessing.py:339 | Loaded 1,014 sentences from artifacts/data/raw/val.en
+2026-03-27 06:05:08 | INFO     | transformer_mt | data_preprocessing.py:339 | Loaded 1,014 sentences from artifacts/data/raw/val.fr
+2026-03-27 06:05:08 | INFO     | transformer_mt | data_preprocessing.py:345 | Tokenising val split …
+2026-03-27 06:05:09 | INFO     | transformer_mt | data_preprocessing.py:339 | Loaded 1,000 sentences from artifacts/data/raw/test.en
+2026-03-27 06:05:09 | INFO     | transformer_mt | data_preprocessing.py:339 | Loaded 1,000 sentences from artifacts/data/raw/test.fr
+2026-03-27 06:05:09 | INFO     | transformer_mt | data_preprocessing.py:345 | Tokenising test split …
+2026-03-27 06:05:10 | INFO     | transformer_mt | data_preprocessing.py:412 | ── Building vocabularies ────────────────────────
+2026-03-27 06:05:10 | INFO     | transformer_mt | data_preprocessing.py:356 | Building vocabularies …
+2026-03-27 06:05:10 | INFO     | transformer_mt | data_preprocessing.py:125 | Vocabulary built — 5,893 tokens (min_freq=2)
+2026-03-27 06:05:10 | INFO     | transformer_mt | data_preprocessing.py:125 | Vocabulary built — 6,470 tokens (min_freq=2)
+2026-03-27 06:05:10 | INFO     | transformer_mt | common.py:73 | Saved JSON  →  artifacts/vocab/src_vocab.json
+2026-03-27 06:05:10 | INFO     | transformer_mt | common.py:73 | Saved JSON  →  artifacts/vocab/tgt_vocab.json
+2026-03-27 06:05:10 | INFO     | transformer_mt | data_preprocessing.py:368 | src vocab size: 5,893
+2026-03-27 06:05:10 | INFO     | transformer_mt | data_preprocessing.py:369 | tgt vocab size: 6,470
+2026-03-27 06:05:10 | INFO     | transformer_mt | data_preprocessing.py:416 | ── Building DataLoaders ─────────────────────────
+2026-03-27 06:05:11 | INFO     | transformer_mt | data_preprocessing.py:234 | Dataset ready — 29,000 pairs
+2026-03-27 06:05:11 | INFO     | transformer_mt | data_preprocessing.py:234 | Dataset ready — 1,014 pairs
+2026-03-27 06:05:11 | INFO     | transformer_mt | data_preprocessing.py:234 | Dataset ready — 1,000 pairs
+2026-03-27 06:05:11 | INFO     | transformer_mt | data_preprocessing.py:431 | ── Preprocessing Summary ────────────────────────
+2026-03-27 06:05:11 | INFO     | transformer_mt | data_preprocessing.py:432 |   train batches : 227
+2026-03-27 06:05:11 | INFO     | transformer_mt | data_preprocessing.py:433 |   val   batches : 8
+2026-03-27 06:05:11 | INFO     | transformer_mt | data_preprocessing.py:434 |   test  batches : 8
+2026-03-27 06:05:11 | INFO     | transformer_mt | data_preprocessing.py:435 |   src vocab     : 5,893 tokens
+2026-03-27 06:05:11 | INFO     | transformer_mt | data_preprocessing.py:436 |   tgt vocab     : 6,470 tokens
+2026-03-27 06:05:11 | INFO     | transformer_mt | data_preprocessing.py:437 |   batch size    : 128
+2026-03-27 06:05:11 | INFO     | transformer_mt | data_preprocessing.py:438 |   max_seq_len   : 100
+2026-03-27 06:05:11 | INFO     | transformer_mt | data_preprocessing.py:439 | ─────────────────────────────────────────────────

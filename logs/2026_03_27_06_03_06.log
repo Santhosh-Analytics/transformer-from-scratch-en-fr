@@ -1,0 +1,2 @@
+2026-03-27 06:03:06 | INFO     | transformer_mt | common.py:56 | Config loaded from: config/config.yaml
+2026-03-27 06:03:06 | ERROR    | transformer_mt | exception.py:17 | [/home/san/Projects/Transformers/Eng_Fr/src/components/data_preprocessing.py  line 165]  spaCy model 'en_core_web_sm' not found. Run: python -m spacy download en_core_web_sm

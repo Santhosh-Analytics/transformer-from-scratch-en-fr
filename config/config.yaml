@@ -1,0 +1,30 @@
+data:
+  source: "multi30k"
+  raw_dir: "artifacts/data/raw"
+  processed_dir: "artifacts/data/processed"
+  vocab_dir: "artifacts/vocab"
+  src_lang: "en"
+  tgt_lang: "fr"
+  max_seq_len: 100
+  min_freq: 2 # min word freq to include in vocab
+model:
+  d_model: 256
+  num_heads: 8
+  num_encoder_layers: 3
+  num_decoder_layers: 3
+  d_ff: 512 # feedforward dim (inner dim of FFN)
+  dropout: 0.1
+  max_seq_len: 100
+training:
+  batch_size: 128
+  epochs: 20
+  learning_rate: 0.0001
+  clip_grad_norm: 1.0
+  warmup_steps: 4000
+  save_dir: "artifacts/models"
+  model_name: "transformer_mt.pt"
+  early_stopping_patience: 5
+  pin_memory: false
+evaluation:
+  beam_size: 4
+  bleu_max_n: 4

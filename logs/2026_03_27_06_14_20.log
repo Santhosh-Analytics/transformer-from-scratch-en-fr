@@ -1,0 +1,5 @@
+2026-03-27 06:14:20 | INFO     | transformer_mt | common.py:83 | Loaded JSON ←  artifacts/vocab/src_vocab.json
+2026-03-27 06:14:20 | INFO     | transformer_mt | common.py:83 | Loaded JSON ←  artifacts/vocab/tgt_vocab.json
+2026-03-27 06:14:21 | INFO     | transformer_mt | common.py:56 | Config loaded from: config/config.yaml
+2026-03-27 06:14:21 | INFO     | transformer_mt | model.py:574 | Transformer model initialised.
+2026-03-27 06:14:21 | INFO     | transformer_mt | common.py:111 | Trainable parameters: 8,773,190

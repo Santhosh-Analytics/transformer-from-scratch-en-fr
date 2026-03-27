@@ -1,0 +1,27 @@
+2026-03-27 05:56:51 | INFO     | transformer_mt | common.py:56 | Config loaded from: config/config.yaml
+2026-03-27 05:56:51 | INFO     | transformer_mt | data_ingestion.py:82 | DataIngestion initialised.
+2026-03-27 05:56:51 | INFO     | transformer_mt | data_ingestion.py:83 |   raw_dir  : artifacts/data/raw
+2026-03-27 05:56:51 | INFO     | transformer_mt | data_ingestion.py:84 |   src_lang : en
+2026-03-27 05:56:51 | INFO     | transformer_mt | data_ingestion.py:85 |   tgt_lang : fr
+2026-03-27 05:56:51 | INFO     | transformer_mt | data_ingestion.py:132 | Starting Multi30k download …
+2026-03-27 05:56:51 | INFO     | transformer_mt | data_ingestion.py:107 |   Downloading https://raw.githubusercontent.com/multi30k/dataset/master/data/task1/raw/train.en.gz
+2026-03-27 05:56:51 | INFO     | transformer_mt | data_ingestion.py:115 |   Saved → artifacts/data/raw/train.en  (29,000 lines)
+2026-03-27 05:56:51 | INFO     | transformer_mt | data_ingestion.py:107 |   Downloading https://raw.githubusercontent.com/multi30k/dataset/master/data/task1/raw/train.fr.gz
+2026-03-27 05:56:51 | INFO     | transformer_mt | data_ingestion.py:115 |   Saved → artifacts/data/raw/train.fr  (29,000 lines)
+2026-03-27 05:56:51 | INFO     | transformer_mt | data_ingestion.py:107 |   Downloading https://raw.githubusercontent.com/multi30k/dataset/master/data/task1/raw/val.en.gz
+2026-03-27 05:56:52 | INFO     | transformer_mt | data_ingestion.py:115 |   Saved → artifacts/data/raw/val.en  (1,014 lines)
+2026-03-27 05:56:52 | INFO     | transformer_mt | data_ingestion.py:107 |   Downloading https://raw.githubusercontent.com/multi30k/dataset/master/data/task1/raw/val.fr.gz
+2026-03-27 05:56:52 | INFO     | transformer_mt | data_ingestion.py:115 |   Saved → artifacts/data/raw/val.fr  (1,014 lines)
+2026-03-27 05:56:52 | INFO     | transformer_mt | data_ingestion.py:107 |   Downloading https://raw.githubusercontent.com/multi30k/dataset/master/data/task1/raw/test_2016_flickr.en.gz
+2026-03-27 05:56:53 | INFO     | transformer_mt | data_ingestion.py:115 |   Saved → artifacts/data/raw/test.en  (1,000 lines)
+2026-03-27 05:56:53 | INFO     | transformer_mt | data_ingestion.py:107 |   Downloading https://raw.githubusercontent.com/multi30k/dataset/master/data/task1/raw/test_2016_flickr.fr.gz
+2026-03-27 05:56:53 | INFO     | transformer_mt | data_ingestion.py:115 |   Saved → artifacts/data/raw/test.fr  (1,000 lines)
+2026-03-27 05:56:53 | INFO     | transformer_mt | data_ingestion.py:140 | Download complete.
+2026-03-27 05:56:53 | INFO     | transformer_mt | data_ingestion.py:154 | ── Data Ingestion Summary ──────────────────────
+2026-03-27 05:56:53 | INFO     | transformer_mt | data_ingestion.py:159 |   train.en  →  artifacts/data/raw/train.en  (29,000 lines)
+2026-03-27 05:56:53 | INFO     | transformer_mt | data_ingestion.py:159 |   train.fr  →  artifacts/data/raw/train.fr  (29,000 lines)
+2026-03-27 05:56:53 | INFO     | transformer_mt | data_ingestion.py:159 |   val  .en  →  artifacts/data/raw/val.en  (1,014 lines)
+2026-03-27 05:56:53 | INFO     | transformer_mt | data_ingestion.py:159 |   val  .fr  →  artifacts/data/raw/val.fr  (1,014 lines)
+2026-03-27 05:56:53 | INFO     | transformer_mt | data_ingestion.py:159 |   test .en  →  artifacts/data/raw/test.en  (1,000 lines)
+2026-03-27 05:56:53 | INFO     | transformer_mt | data_ingestion.py:159 |   test .fr  →  artifacts/data/raw/test.fr  (1,000 lines)
+2026-03-27 05:56:53 | INFO     | transformer_mt | data_ingestion.py:162 | ────────────────────────────────────────────────
