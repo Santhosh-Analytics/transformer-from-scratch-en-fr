@@ -159,7 +159,8 @@ class DataIngestion:
                     logger.info(f"  {split:5s}.{lang}  →  {path}  ({lines:,} lines)")
                 else:
                     logger.warning(f"  {split:5s}.{lang}  →  MISSING: {path}")
-        logger.info("────────────────────────────────────────────────")
+        print()
+        logger.info("_" * 90)
 
 
 # ──────────────────────────────────────────────────────────────
@@ -188,7 +189,7 @@ if __name__ == "__main__":
     src = paths["train"]["en"].read_text(encoding="utf-8").splitlines()
     tgt = paths["train"]["fr"].read_text(encoding="utf-8").splitlines()
     print("\nSample sentence pairs (train):")
-    print("─" * 60)
+    print("_" * 80)
     for en, fr in zip(src[:3], tgt[:3]):
         print(f"  EN: {en}")
         print(f"  FR: {fr}")
