@@ -8,3 +8,27 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Artifacts — data and models are too large for git
+artifacts/data/
+artifacts/models/
+artifacts/vocab/
+
+# Logs
+logs/
+
+# Env
+.env
+
+# Kaggle credentials
+kaggle.json
+
+# Editor
+.vscode/
+.idea/
