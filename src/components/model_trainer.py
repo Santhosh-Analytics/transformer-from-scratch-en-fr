@@ -334,6 +334,44 @@ class ModelTrainer:
 
         return total_loss / total_tokens if total_tokens > 0 else 0.0
 
+    # ── public: load checkpoint ──────────────────────────────
+    def load_checkpoint(self, path) -> int:
+        """
+        Resume training from a saved checkpoint.
+        Restores model weights, optimizer state, scheduler step,
+        and early stopping best_loss so training continues cleanly.
+
+        Returns the epoch number stored in the checkpoint so the
+        training loop can start from the correct epoch number.
+
+        Usage
+        ─────
+        start_epoch = trainer.load_checkpoint("artifacts/models/transformer_mt.pt")
+        history = trainer.run(start_epoch=start_epoch)
+        """
+        from pathlib import Path as _Path
+
+        path = _Path(path)
+        if not path.exists():
+            raise CheckpointError(f"Checkpoint not found: {path}")
+        try:
+            ckpt = torch.load(path, map_location=self.config.device)
+            self.model.load_state_dict(ckpt["model_state"])
+            self.optimizer.load_state_dict(ckpt["optimizer_state"])
+            self.scheduler.load_state_dict(ckpt["scheduler_state"])
+            self.early_stopping.best_loss = ckpt["val_loss"]
+            start_epoch = ckpt["epoch"] + 1
+            logger.info(f"Resumed from checkpoint: {path}")
+            logger.info(f"  Saved at epoch : {ckpt['epoch']}")
+            logger.info(f"  Best val loss  : {ckpt['val_loss']:.4f}")
+            logger.info(f"  Scheduler step : {self.scheduler._step}")
+            logger.info(f"  Resuming from epoch {start_epoch}")
+            return start_epoch
+        except CheckpointError:
+            raise
+        except Exception as e:
+            raise CheckpointError(f"Failed to load checkpoint: {e}") from e
+
     # ── private: save checkpoint ─────────────────────────────
     def _save_checkpoint(self, epoch: int, val_loss: float) -> None:
         """Save model + optimizer + scheduler state to disk."""
@@ -354,19 +392,27 @@ class ModelTrainer:
             raise CheckpointError(f"Failed to save checkpoint: {e}") from e
 
     # ── public: full training run ─────────────────────────────
-    def run(self) -> dict:
+    def run(self, start_epoch: int = 1) -> dict:
         """
         Execute the full training loop.
+
+        Parameters
+        ──────────
+        start_epoch : int
+            Epoch to start from. Default=1 (fresh training).
+            Pass the return value of load_checkpoint() to resume.
 
         Returns
         ───────
         history : dict with lists of train_loss, val_loss, lr per epoch
         """
         logger.info("══ Training started ════════════════════════════")
+        if start_epoch > 1:
+            logger.info(f"  Resuming from epoch {start_epoch}")
         history = {"train_loss": [], "val_loss": [], "lr": []}
 
         try:
-            for epoch in range(1, self.config.epochs + 1):
+            for epoch in range(start_epoch, self.config.epochs + 1):
                 with epoch_timer(epoch):
                     train_loss = self._train_epoch()
                     val_loss = self._val_epoch()
@@ -458,10 +504,19 @@ if __name__ == "__main__":
     # ── 3. trainer ────────────────────────────────────────────
     trainer = build_trainer(model, train_loader, val_loader)
 
-    # ── 4. train ──────────────────────────────────────────────
-    history = trainer.run()
+    # ── 4. resume from checkpoint if it exists, else train fresh
+    import sys
 
-    # ── 5. print loss curve summary ───────────────────────────
+    checkpoint_path = "artifacts/models/transformer_mt.pt"
+    if "--resume" in sys.argv:
+        start_epoch = trainer.load_checkpoint(checkpoint_path)
+    else:
+        start_epoch = 1
+
+    # ── 5. train ──────────────────────────────────────────────
+    history = trainer.run(start_epoch=start_epoch)
+
+    # ── 6. print loss curve summary ───────────────────────────
     print("\nLoss curve summary:")
     print(f"{'Epoch':>6}  {'Train Loss':>10}  {'Val Loss':>10}  {'LR':>12}")
     print("─" * 46)
